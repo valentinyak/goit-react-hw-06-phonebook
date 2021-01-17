@@ -13,7 +13,9 @@ function ContactForm({ addContact }) {
     const { nameInput, phoneInput } = e.target.form;
     const isContactExist = store
       .getState()
-      .contacts.find(contact => contact.name === e.target.form.nameInput.value);
+      .contacts.items.find(
+        contact => contact.name === e.target.form.nameInput.value,
+      );
 
     if (isContactExist) {
       alert(`${nameInput.value} is already in contacts`);

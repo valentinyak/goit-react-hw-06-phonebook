@@ -9,7 +9,7 @@ function ContactList({ contacts, onDelete }) {
   const handleDelete = e => {
     const contactId = store
       .getState()
-      .contacts.find(contact => contact.id === e.target.id);
+      .contacts.items.find(contact => contact.id === e.target.id);
 
     onDelete(contactId);
   };
@@ -33,7 +33,7 @@ const getFilteredContacts = (contacts, filter) =>
   );
 
 const mapStateToProps = store => ({
-  contacts: getFilteredContacts(store.contacts, store.filter),
+  contacts: getFilteredContacts(store.contacts.items, store.contacts.filter),
 });
 
 const mapDispatchToProps = dispatch => ({
