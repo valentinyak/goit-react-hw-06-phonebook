@@ -1,4 +1,4 @@
-export default function filterReducer(state = '', action) {
+const filterReducer = (state = '', action) => {
   switch (action.type) {
     case 'filter/changeFilter':
       return action.payload;
@@ -6,4 +6,6 @@ export default function filterReducer(state = '', action) {
     default:
       return state;
   }
-}
+};
+
+export default filterReducer;
