@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ContactItem from './ContactItem/ContactItem';
 import * as contactsActions from '../../redux/contacts/contacts-actions';
-import store from '../../redux/store';
+import { store } from '../../redux/store';
 
 function ContactList({ contacts, onDelete }) {
   const handleDelete = e => {
