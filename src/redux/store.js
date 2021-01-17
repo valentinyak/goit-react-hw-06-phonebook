@@ -23,20 +23,26 @@ const middleware = [
   }),
 ];
 
+const rootPersistConfig = {
+  key: 'phonebook',
+  storage,
+  blacklist: ['contacts'],
+};
+const contactsPersistConfig = {
+  key: 'contacts',
+  storage: storage,
+  blacklist: ['filter'],
+};
+
 const mainReducer = combineReducers({
   items: contactsReducer,
   filter: filterReducer,
 });
 const rootReducer = combineReducers({
-  contacts: mainReducer,
+  contacts: persistReducer(contactsPersistConfig, mainReducer),
 });
 
-const persistConfig = {
-  key: 'phonebook',
-  storage,
-  blacklist: ['contacts.filter'],
-};
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
